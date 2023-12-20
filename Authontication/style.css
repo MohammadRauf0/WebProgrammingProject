@@ -101,16 +101,20 @@
 * {
   margin: 0;
   padding: 0;
+  background: #111111;
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-body {
-  display: absolute;
-  right: 30px;
-  top: 50%;
+.body {
+  /* display:;
+  right: 10%;
+  bottom: 50%; */
+  margin-top: 150px;
+  margin-right: 150px;
+  float: right;
   /* transform: translate(50%, 50%); */
-  min-height: 100vh;
+  min-height: 500px;
   background: #111111;
 }
 
@@ -166,6 +170,7 @@ h2 {
 .input-box .icon {
   position: absolute;
   left: 10px;
+  width: 0px;
   color: #fff;
   font-size: 1.2em;
   line-height: 55px;
