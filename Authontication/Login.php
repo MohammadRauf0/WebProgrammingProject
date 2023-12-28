@@ -10,7 +10,7 @@
 
 <body>
   <div class="body">
-    <div class="wrapper">
+    <div class="wrapperLog">
       <form action="" method="post">
         <h2>Log in</h2>
 

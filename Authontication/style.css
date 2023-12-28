@@ -58,24 +58,32 @@
   text-align: center;
   margin: 10px auto;
 }
+*/
 .style09 {
-  
   display: grid;
-  grid-template-areas: 
-    "main main main main main" 
-    "right right left left left";
-  grid-gap: 10px;
-  margin: 10px auto;
+  grid-template-areas:
+    " main main main main main main"
+    " right right right left left left";
+  grid-gap: 5px 0px;
+  margin: 0;
 }
+
 .main {
   grid-area: main;
 }
+
 .right {
   grid-area: right;
 }
+
 .left {
   grid-area: left;
 }
+
+.input-boxSpecial {
+  display: flex;
+}
+/*
 .style10 {
   text-align: left;
   margin: 0px 26px;
@@ -101,27 +109,43 @@
 * {
   margin: 0;
   padding: 0;
-  background: #111111;
+  background: #292d36;
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
 }
 
 .body {
-  /* display:;
-  right: 10%;
-  bottom: 50%; */
-  margin-top: 150px;
-  margin-right: 150px;
+  margin-top: 70px;
+  margin-right: 100px;
   float: right;
-  /* transform: translate(50%, 50%); */
   min-height: 500px;
-  background: #111111;
+  /* background: #131c2a; */
+  box-shadow: 5px 5px 20px #131313, 5px 5px 25px #131313;
+  border-radius: 5px;
+  @media (max-width: 250px) {
+    margin-top: 150px;
+    margin: 125px auto;
+    float: right;
+    min-height: 500px;
+    background-color: #131c2a;
+  }
 }
 
-.wrapper {
+.wrapperSign {
+  width: 420px;
+  padding: 15px;
+  height: 630px;
+  border: 5px solid #070616;
+  border-radius: 10px;
+  transition: 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapperLog {
   width: 400px;
   height: 500px;
-  background: transparent;
   border: 5px solid #333;
   border-radius: 10px;
   transition: 0.5s;
@@ -130,54 +154,84 @@
   justify-content: center;
   align-items: center;
 }
-.wrapper:hover {
-  border: 5px solid #00ffff;
-  box-shadow: 0 0 20px #00ffff, inset 0 0 20px #aef5f5;
-}
 h2 {
   font-size: 2em;
   text-align: center;
   color: #fff;
   transition: 0.5s;
 }
-.wrapper:hover h2 {
-  color: #00ffff;
-}
 .input-box {
   position: relative;
-  width: 320px;
-  margin: 30px 0;
+  width: 100%;
+  margin: 25px 0;
+  background-color: #0e1929;
+}
+.input-boxSpecial {
+  display: flex;
+  justify-content: space-between;
+  width: 100%; /* Adjusted width to leave some space on both sides */
+}
+
+.input-boxSpecial input {
+  width: 95%;
+  height: 50px;
+  background-color: #636468;
+  border: 2px solid #a3a3a3;
+  outline: none;
+  border-radius: 7px;
+  font-size: 1em;
+  color: #a3a3a3;
+  padding: 0 10px;
+  transition: 0.5s;
+  box-sizing: border-box;
+}
+
+.input-boxSpecial input:hover {
+  background-color: #24288d;
+  border: 2px solid #24288d;
+  color: #a3a3a3;
+  transition: 0.5s;
+}
+
+.input-boxSpecial input::placeholder {
+  color: #e2e2e2f1;
 }
 .input-box input {
   width: 100%;
   height: 50px;
-  background: transparent;
-  border: 2px solid #333;
+  background-color: #636468;
+  border: 2px solid #a3a3a3;
   outline: none;
-  border-radius: 5px;
+  border-radius: 7px;
   font-size: 1em;
-  color: #fff;
+  color: #a3a3a3;
   padding: 0 10px 0 35px;
   transition: 0.5s;
 }
-.wrapper:hover .input-box input {
-  border: 2px solid #00ffff;
-  box-shadow: 0 0 10px #00ffff, inset 0 0 10px #00ffff;
+.input-box input:hover {
+  width: 100%;
+  height: 50px;
+  background-color: #24288d;
+  border: 2px solid #24288d;
+  outline: none;
+  border-radius: 7px;
+  font-size: 1em;
+  color: #a3a3a3;
+  padding: 0 10px 0 35px;
+  transition: 0.5s;
 }
 .input-box input::placeholder {
-  color: #ffffff4d;
+  color: #e2e2e2f1;
 }
 .input-box .icon {
   position: absolute;
   left: 10px;
+  background: transparent;
   width: 0px;
   color: #fff;
   font-size: 1.2em;
   line-height: 55px;
   transition: 0.5s;
-}
-.wrapper:hover .input-box .icon {
-  color: #00ffff;
 }
 .forget-pass {
   margin: -15px 0 15px;
@@ -192,22 +246,38 @@ h2 {
 }
 button {
   position: relative;
-  width: 100%;
+  width: 170px;
   height: 45px;
-  background: #333;
-  border: none;
+  margin: 0 auto;
+  background: #190f3d;
+  border: 1px solid #190f3d;
   outline: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
   font-size: 1em;
   color: #fff;
   font-weight: 500;
   transition: 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.wrapper:hover button {
-  background: #00ffff;
-  color: #111111;
-  box-shadow: 0 0 20px #00ffff;
+button:hover {
+  position: relative;
+  width: 100%;
+  height: 45px;
+  background: #66d0b9;
+  border: 1px solid #66d0b9;
+  outline: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1em;
+  color: #fff;
+  font-weight: 500;
+  transition: 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .register-link {
   font-size: 0.9em;
@@ -218,12 +288,9 @@ button {
   color: #fff;
 }
 .register-link p a {
-  color: #008bb1;
+  color: #66d0b9;
   text-decoration: none;
   font-weight: 600;
-}
-.wrapper:hover .register-link p a {
-  color: #00ffff;
 }
 .register-link p a:hover {
   text-decoration: underline;

@@ -10,14 +10,22 @@
 
 <body>
   <div class="body">
-    <div class="wrapper">
+    <div class="wrapperSign main">
       <form action="" method="post">
         <h2>Sign Up</h2>
-
         <div class="input-box">
           <span class="icon"><i class="fa-solid fa-user"></i></span>
           <input type="text" placeholder="Username" required />
         </div>
+        <div class="style09">
+        <div class="input-boxSpecial right">
+          <input type="text" placeholder="First Name" required />
+        </div>
+        <div class="input-boxSpecial left">
+          <input type="text" placeholder="Last Name" required />
+        </div>
+        </div>
+
         <div class="input-box">
           <span class="icon"><i class="fa-solid fa-envelope"></i></span>
           <input type="email" placeholder="Email" required />
