@@ -4,27 +4,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>SignUp</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="https://kit.fontawesome.com/30b1296f81.js" crossorigin="anonymous"></script>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 
 <body>
-<nav class="navbar bg-body-tertiary bg-dark">
-        <button class="btn btn-primary btn-dark m-1" type="button" data-bs-toggle="offcanvas"
-            data-bs-target="#sidebar-wrapper">
-            <i class="bi bi-arrow-bar-right" style="font-size: 20px;"></i>
-        </button>
-        <div class="container justify-content-center">
-            <div class="navbar-brand">
-                <a href="dashboard.php" class="navbar-brand">
-                    <i class="fa-solid fa-n fa-flip fa-2xl" style="color: #ffffff;"></i>
-                </a>
-            </div>
+  <nav class="navbar bg-body-tertiary bg-dark">
+    <div class="container justify-content-center">
+      <div class="navbar-brand">
+        <a href="dashboard.php" class="navbar-brand">
+        </a>
+        <div>
+          <img width="190" src="../Assets/logo2.png" alt="">
         </div>
-    </nav>
-   
-    
-  <div class="bigdiv">
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="bigDivSign">
     <div class="wrapperSign main">
       <form action="" method="post">
         <h2>Sign Up</h2>
@@ -56,7 +58,6 @@
       </form>
     </div>
   </div>
-  <script src="https://kit.fontawesome.com/95ff385942.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

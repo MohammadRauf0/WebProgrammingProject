@@ -114,11 +114,11 @@
 }
 
 body {
-  background: linear-gradient(to left,#3b474e, #5e6b7a);
+  background: linear-gradient(to left, #3b474e, #5e6b7a);
 }
 
-.bigdiv {
-  margin-top: 70px;
+.bigDivLog {
+  margin-top: 50px;
   margin-right: 100px;
   float: right;
   min-height: 500px;
@@ -133,6 +133,23 @@ body {
     background: #292d36;
   }
 }
+.bigDivSign {
+  margin-top: 20px;
+  margin-right: 100px;
+  float: right;
+  min-height: 500px;
+  background: #292d36;
+  box-shadow: 5px 5px 20px #131313, 5px 5px 25px #131313;
+  border-radius: 5px;
+  @media (max-width: 250px) {
+    margin-top: 150px;
+    margin: 125px auto;
+    float: right;
+    min-height: 500px;
+    background: #292d36;
+  }
+}
+
 .wrapperLogo {
   margin-top: 70px;
   margin-right: 100px;
@@ -164,7 +181,7 @@ body {
 .wrapperLog {
   width: 400px;
   height: 500px;
-  border: 5px solid #333;
+  border: 5px solid #070616;
   background: #292d36;
   border-radius: 10px;
   transition: 0.5s;
@@ -281,7 +298,7 @@ h2 {
   justify-content: center;
   align-items: center;
 }
-button:hover {
+.button:hover {
   position: relative;
   width: 100%;
   height: 45px;
