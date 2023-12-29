@@ -8,6 +8,15 @@
     <script src="https://kit.fontawesome.com/30b1296f81.js" crossorigin="anonymous"></script>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        .nav-link-hover:hover {
+            background-color: #007bff;
+            /* Change as needed */
+            color: white;
+            /* Change as needed */
+            transition: .7s;
+        }
+    </style>
 
 </head>
 
@@ -42,25 +51,25 @@
             <!-- Your sidebar content goes here -->
             <ul class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
-                    <a href="addnote.php" class="nav-link text-white" aria-current="page">
+                    <a href="addnote.php" class="nav-link text-white nav-link-hover" aria-current="page">
                         <i class="bi bi-pencil-square m-1" width="16" height="16"></i>
                         Add Note
                     </a>
                 </li>
                 <li>
-                    <a href="updatenoteH.php" class="nav-link text-white">
+                    <a href="updatenoteH.php" class="nav-link text-white nav-link-hover">
                         <i class="bi bi-pen m-1" width="16" height="16"></i>
                         Edit Note
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link text-white">
+                    <a href="#" class="nav-link text-white nav-link-hover">
                         <i class="bi bi-trash m-1" width="16" height="16"></i>
                         Delete Note
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link text-white">
+                    <a href="#" class="nav-link text-white nav-link-hover">
                         <i class="bi bi-search m-1" width="16" height="16"></i>
                         Search
                     </a>
@@ -100,7 +109,7 @@
                     </strong>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                    <li><a class="dropdown-item" href="#index">Sign out</a></li>
+                    <li><a class="dropdown-item" href="../Authontication/Login.php">Sign out</a></li>
                 </ul>
             </div>
         </div>
