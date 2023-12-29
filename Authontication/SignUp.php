@@ -9,7 +9,21 @@
 </head>
 
 <body>
-   <img width="200" src="../Assets/logo.png" alt="LoGo">
+<nav class="navbar bg-body-tertiary bg-dark">
+        <button class="btn btn-primary btn-dark m-1" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#sidebar-wrapper">
+            <i class="bi bi-arrow-bar-right" style="font-size: 20px;"></i>
+        </button>
+        <div class="container justify-content-center">
+            <div class="navbar-brand">
+                <a href="dashboard.php" class="navbar-brand">
+                    <i class="fa-solid fa-n fa-flip fa-2xl" style="color: #ffffff;"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+   
+    
   <div class="bigdiv">
     <div class="wrapperSign main">
       <form action="" method="post">
@@ -35,7 +49,7 @@
           <span class="icon"><i class="fa-solid fa-lock"></i></span>
           <input type="password" placeholder="password" required />
         </div>
-        <button type="submit">SignUp</button>
+        <button class="button" type="submit">SignUp</button>
         <div class="register-link">
           <p>already have an account?<a href="Login.php">Login</a></p>
         </div>

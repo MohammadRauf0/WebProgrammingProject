@@ -13,7 +13,6 @@
     <div class="wrapperLog">
       <form action="" method="post">
         <h2>Log in</h2>
-
         <div class="input-box">
           <span class="icon"><i class="fa-solid fa-user"></i></span>
           <input type="text" placeholder="Username" required />
@@ -25,7 +24,7 @@
         <div class="forget-pass">
           <a href="#">Forget Password</a>
         </div>
-        <button type="submit">Login</button>
+        <button class="button" type="submit">Login</button>
         <div class="register-link">
           <p>Don't have an account?<a href="SignUp.php">Register</a> </p>
         </div>
