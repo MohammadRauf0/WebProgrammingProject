@@ -9,7 +9,7 @@
 </head>
 
 <body>
-  <div class="body">
+  <div class="bigdiv">
     <div class="wrapperLog">
       <form action="" method="post">
         <h2>Log in</h2>

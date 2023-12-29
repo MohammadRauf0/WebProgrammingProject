@@ -9,7 +9,8 @@
 </head>
 
 <body>
-  <div class="body">
+   <img width="200" src="../Assets/logo.png" alt="LoGo">
+  <div class="bigdiv">
     <div class="wrapperSign main">
       <form action="" method="post">
         <h2>Sign Up</h2>
@@ -18,12 +19,12 @@
           <input type="text" placeholder="Username" required />
         </div>
         <div class="style09">
-        <div class="input-boxSpecial right">
-          <input type="text" placeholder="First Name" required />
-        </div>
-        <div class="input-boxSpecial left">
-          <input type="text" placeholder="Last Name" required />
-        </div>
+          <div class="input-boxSpecial right">
+            <input type="text" placeholder="First Name" required />
+          </div>
+          <div class="input-boxSpecial left">
+            <input type="text" placeholder="Last Name" required />
+          </div>
         </div>
 
         <div class="input-box">

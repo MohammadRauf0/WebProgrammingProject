@@ -109,17 +109,20 @@
 * {
   margin: 0;
   padding: 0;
-  background: #292d36;
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.body {
+body {
+  background: linear-gradient(to left,#3b474e, #5e6b7a);
+}
+
+.bigdiv {
   margin-top: 70px;
   margin-right: 100px;
   float: right;
   min-height: 500px;
-  /* background: #131c2a; */
+  background: #292d36;
   box-shadow: 5px 5px 20px #131313, 5px 5px 25px #131313;
   border-radius: 5px;
   @media (max-width: 250px) {
@@ -127,10 +130,24 @@
     margin: 125px auto;
     float: right;
     min-height: 500px;
-    background-color: #131c2a;
+    background: #292d36;
   }
 }
-
+.wrapperLogo {
+  margin-top: 70px;
+  margin-right: 100px;
+  float: left;
+  min-height: 500px;
+  width: 420px;
+  padding: 15px;
+  height: 630px;
+  border: 5px solid #070616;
+  border-radius: 10px;
+  transition: 0.5s;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
 .wrapperSign {
   width: 420px;
   padding: 15px;
@@ -138,6 +155,7 @@
   border: 5px solid #070616;
   border-radius: 10px;
   transition: 0.5s;
+  background: #292d36;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -147,6 +165,7 @@
   width: 400px;
   height: 500px;
   border: 5px solid #333;
+  background: #292d36;
   border-radius: 10px;
   transition: 0.5s;
   display: flex;
