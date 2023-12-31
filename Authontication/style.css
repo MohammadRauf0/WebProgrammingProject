@@ -59,6 +59,7 @@
   margin: 10px auto;
 }
 */
+/*
 .style09 {
   display: grid;
   grid-template-areas:
@@ -105,6 +106,7 @@
 */
 
 /* the new css  code*/
+/*
 
 * {
   margin: 0;
@@ -161,10 +163,10 @@ body {
   border: 5px solid #070616;
   border-radius: 10px;
   transition: 0.5s;
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
+  
 }
+*/
+/*
 .wrapperSign {
   width: 420px;
   padding: 15px;
@@ -200,12 +202,12 @@ h2 {
   position: relative;
   width: 100%;
   margin: 25px 0;
-  /* background-color: #0e1929; */
+  
 }
 .input-boxSpecial {
   display: flex;
   justify-content: space-between;
-  width: 100%; /* Adjusted width to leave some space on both sides */
+  width: 100%; /
 }
 
 .input-boxSpecial input {
@@ -331,3 +333,23 @@ h2 {
 .register-link p a:hover {
   text-decoration: underline;
 }
+*/
+@import url("https://fonts.googleapis.com/css2?family=Your+Font+Family:400,700&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif;
+  /* background-color: whitesmoke; */
+  background-image:url("../Assets/back3.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  
+}
+.box-area {
+  width: 930px;;
+  /* height: 70%; */
+  /* height: 400px; */
+}
+
+
+ 

@@ -1,11 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Your+Font+Family:400,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Your+Font+Family:400,700&display=swap");
 
-body{
-  font-family:'Poppins', sans-serif;
-  background-color: whitesmoke
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: whitesmoke;
 }
 
-.box-area{
+.box-area {
   width: 75%;
-  height: 70%;
+  /* height: 70%; */
+  /* height: 400px; */
 }
