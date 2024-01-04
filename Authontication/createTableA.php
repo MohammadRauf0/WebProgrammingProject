@@ -1,5 +1,4 @@
 <?php
-
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -18,7 +17,9 @@ $sql = "CREATE TABLE User (
     first_name VARCHAR(255) NOT NULL,
     last_name VARCHAR(255) NOT NULL,
     user_email VARCHAR(255) NOT NULL,
-    user_pass VARCHAR(255) NOT NULL
+    user_pass VARCHAR(255) NOT NULL,
+    conform_userP VARCHAR(255) NOT NULL
+
  )";
 
 if ($conn->query($sql) === TRUE) {

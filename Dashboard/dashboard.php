@@ -45,7 +45,7 @@
 <body>
 
 
-<?php include 'navbarBoot.php'; ?>
+    <?php include 'navbarBoot.php'; ?>
     <!-- in the dashboard, it should name of app and than in smaller, it should show name of user and than it show the number
     of saved noted thoughout the use of this app -->
     <!-- write dashboard in the center of a page -->

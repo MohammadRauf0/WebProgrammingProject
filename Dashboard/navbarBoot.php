@@ -22,8 +22,7 @@
 
 <body>
     <nav class="navbar bg-body-tertiary bg-dark">
-        <button class="btn btn-primary btn-dark m-1" type="button" data-bs-toggle="offcanvas"
-            data-bs-target="#sidebar-wrapper">
+        <button class="btn btn-primary btn-dark m-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar-wrapper">
             <i class="bi bi-arrow-bar-right" style="font-size: 20px;"></i>
         </button>
         <div class="container justify-content-center">
@@ -36,12 +35,10 @@
     </nav>
 
 
-    <div class="offcanvas offcanvas-start text-bg-dark p-2" style="width: 300px;" height="100vh" tabindex="-1"
-        id="sidebar-wrapper">
+    <div class="offcanvas offcanvas-start text-bg-dark p-2" style="width: 300px;" height="100vh" tabindex="-1" id="sidebar-wrapper">
         <div class="offcanvas-body ">
 
-            <a href="dashboard.php"
-                class="d-flex align-items-center mb-2 mb-md-3 me-md-auto text-white text-decoration-none">
+            <a href="dashboard.php" class="d-flex align-items-center mb-2 mb-md-3 me-md-auto text-white text-decoration-none">
                 <svg class="bi pe-none me-3" width="40" height="40">
                     <use xlink:href="#bootstrap"></use>
                 </svg>
@@ -81,35 +78,33 @@
                 <strong style="font-size: x-large;">History</strong>
                 <div class="items" style="margin-top: 10px;">
                     <?php
-                require_once "../config.php";
-                $query = "SELECT title FROM notes ORDER BY title"; // replace 'title' and 'notes' with your actual column and table name
-                $result = mysqli_query($conn, $query);
-                if (mysqli_num_rows($result) > 0) {
-                    // output data of each row
-                    while($row = mysqli_fetch_assoc($result)) {
-                        echo "<li>".$row['title']."</li>";
+                    require_once "../config.php";
+                    $query = "SELECT title FROM notes ORDER BY title"; // replace 'title' and 'notes' with your actual column and table name
+                    $result = mysqli_query($conn, $query);
+                    if (mysqli_num_rows($result) > 0) {
+                        // output data of each row
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            echo "<li>" . $row['title'] . "</li>";
+                        }
+                    } else {
+                        echo "No notes found";
                     }
-                } else {
-                    echo "No notes found";
-                }
-                ?>
+                    ?>
                 </div>
             </div>
 
 
             <hr>
             <div class="dropdown" style="position: absolute; bottom: 20px;">
-                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="https://cdn-icons-png.flaticon.com/512/3177/3177440.png" alt="" width="32" height="32"
-                        class="rounded-circle me-3">
+                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3177/3177440.png" alt="" width="32" height="32" class="rounded-circle me-3">
                     <strong>
                         I am Groot
                         <!-- <?php echo $_SESSION['username']; ?> -->
                     </strong>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                    <li><a class="dropdown-item" href="../Authontication/Login.php">Sign out</a></li>
+                    <li><a class="dropdown-item" href="../Authontication/Logout.php">Sign out</a></li>
                 </ul>
             </div>
         </div>
