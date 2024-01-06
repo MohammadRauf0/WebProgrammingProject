@@ -7,7 +7,7 @@ if (isset($_SESSION['log']) && $_SESSION['log'] == '1') {
         <link rel="stylesheet" href="style.css" />
         <img src="../Assets/error3.png" alt="Success Image"width=200>
         <p class="e-message">You already logged in</p>
-        <meta http-equiv="refresh" content="3, url=../Dashboard/dashboard.php">
+        <meta http-equiv="refresh" content="3, url=../dashboard.php">
       </div>
      
     <body/>
@@ -60,7 +60,7 @@ if (isset($_POST['button2'])) {
             <link rel="stylesheet" href="style.css" />
             <img src="../Assets/tick4.webp" alt="Success Image"width=250>
             <p class="success-message">You have successfully logged in!,you can view your dashbored</p>
-            <meta http-equiv="refresh" content="3, url=../Dashboard/dashboard.php">
+            <meta http-equiv="refresh" content="3, url=../dashboard.php">
           </div>
          
         <body/>
