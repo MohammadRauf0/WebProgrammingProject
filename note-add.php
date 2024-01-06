@@ -17,7 +17,7 @@ session_start();
         </div>
 
         <div class="card-body">
-          <form action="CRUD.php" method="POST">
+          <form action="create-note.php" method="POST">
 
             <div class="mb-3">
               <label>Title:</label>

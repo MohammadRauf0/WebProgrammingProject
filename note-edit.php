@@ -28,7 +28,7 @@ session_start();
             if (mysqli_num_rows($query_run)) {
               $note = mysqli_fetch_array($query_run);
           ?>
-              <form action="CRUD.php" method="POST">
+              <form action="update-note.php" method="POST">
 
                 <input type="hidden" name=note_id value="<?= $note_id; ?>">
 

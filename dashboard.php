@@ -1,5 +1,23 @@
 <?php
 session_start();
+
+// if (isset($_SESSION['log']) && $_SESSION['log'] != '1') {
+//   echo '
+//     <body class="divBack">
+//       <div class="success-container">
+//         <link rel="stylesheet" href="style.css" />
+//         <img src="../Assets/error3.png" alt="Success Image"width=200>
+//         <p class="e-message">You already logged in</p>
+//         <meta http-equiv="refresh" content="3, url=./auth/login.php">
+//       </div>
+     
+//     <body/>
+//     ';
+
+//   exit();
+// }
+
+
 include('dashboardIncludes/header.html');
 require 'db-connection.php';
 ?>
@@ -81,7 +99,7 @@ require 'db-connection.php';
               </a>
             </div>
             <div class="col-1 d-flex align-items-center">
-              <form action="CRUD.php" method="POST" class="d-inline">
+              <form action="delete-note.php" method="POST" class="d-inline">
                 <input type="hidden" name="note_id" value="<?= $note['id']; ?>">
                 <button type="submit" name="delete_note" class="btn btn-danger btn-sm">
                   <i class="fa-regular fa-trash-can" style="color: #ffffff;"></i>
@@ -113,7 +131,7 @@ require 'db-connection.php';
     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="userDropdown">
       <li><a class="dropdown-item" href="#">Profile</a></li>
       <li>
-        <a class="dropdown-item" href="../Authentication/Login.php">Sign out</a>
+        <a class="dropdown-item" href="../auth/login.php">Sign out</a>
       </li>
     </ul>
   </div>

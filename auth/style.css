@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Your+Font+Family:400,700&display=swap");
+
+.body {
+  font-family: "Poppins", sans-serif;
+  background-image: url("../assets/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.box-area {
+  width: 930px;
+}
+
+.success-container {
+  border: 3px solid #333130;
+  border-radius: 10px;
+  background-color: #f4f2f0;
+  padding: 20px;
+  text-align: center;
+  max-width: 850px;
+  height: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.divBack {
+  /* background: linear-gradient(to left, pink, orange); */
+  background: linear-gradient(to left, #767e72, #677063);
+}
+
+.success-message {
+  font-size: 18px;
+  color: #28a745;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+ .e-message{
+  font-size: 18px;
+  color: #c67e27;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
