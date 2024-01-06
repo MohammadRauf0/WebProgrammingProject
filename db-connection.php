@@ -5,7 +5,7 @@ $password = "";
 $dbName = "notably";
 
 // Attempt MySQL server connection
-@$con = mysqli_connect($serverName, $userName, $password);
+$con = mysqli_connect($serverName, $userName, $password);
 
 // Check connection
 if ($con === false) {

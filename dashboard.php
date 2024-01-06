@@ -1,21 +1,21 @@
 <?php
 session_start();
 
-// if (isset($_SESSION['log']) && $_SESSION['log'] != '1') {
-//   echo '
-//     <body class="divBack">
-//       <div class="success-container">
-//         <link rel="stylesheet" href="style.css" />
-//         <img src="../Assets/error3.png" alt="Success Image"width=200>
-//         <p class="e-message">You already logged in</p>
-//         <meta http-equiv="refresh" content="3, url=./auth/login.php">
-//       </div>
+if (isset($_SESSION['log']) && $_SESSION['log'] != '1') {
+  echo '
+    <body class="divBack">
+      <div class="success-container">
+        <link rel="stylesheet" href="style.css" />
+        <img src="../Assets/error3.png" alt="Success Image"width=200>
+        <p class="e-message">You already logged in</p>
+        <meta http-equiv="refresh" content="3, url=./auth/login.php">
+      </div>
      
-//     <body/>
-//     ';
+    <body/>
+    ';
 
-//   exit();
-// }
+  exit();
+}
 
 
 include('dashboardIncludes/header.html');
@@ -131,15 +131,15 @@ require 'db-connection.php';
     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="userDropdown">
       <li><a class="dropdown-item" href="#">Profile</a></li>
       <li>
-        <a class="dropdown-item" href="../auth/login.php">Sign out</a>
+        <a class="dropdown-item" href="./auth/logOut.php">Sign out</a>
       </li>
     </ul>
   </div>
   <!-- ------------------Start of the footer-------------------- -->
 </div>
 <!---------------end of the side bar/nav cancas------------------->
-<div class="container mt-4">
-  <div class="row">
+<div class="container mt-5">
+  <div class="row mt-5">
     <div class="col">
       <?php
       include('message.php');
@@ -149,27 +149,36 @@ require 'db-connection.php';
   <div class="row">
     <div class="card">
 
-      <div class="card-header">
+      <div class="card-header text-center">
+
         <h1>
-          Welcome back[some name]
+          Welcome back <?= $_SESSION['user']; ?>
         </h1>
       </div>
 
       <div class="card-body">
-        //MESSAGE
-      </div>
+        <div class="contaion">
+          <div class="row">
+            <div class="">
+              <h1>Welcome to Your Web Programming Journey!</h1>
+              <p>Embrace the endless possibilities of web development as you step into your personalized dashboard. Here, innovation meets code, and creativity finds its digital canvas.</p>
 
+              <p>Whether you're a seasoned developer or just starting, this space is designed to empower you. Explore a world of technologies, create cutting-edge applications, and connect with a community passionate about shaping the digital landscape.</p>
+
+              <p>Unleash your imagination, write elegant code, and witness your ideas come to life. From front-end design to back-end logic, every keystroke propels you forward in your programming journey.</p>
+
+              <p>Your dashboard is not just a workspace; it's a hub of inspiration. Stay updated on the latest industry trends, discover new frameworks, and collaborate with fellow developers. This is your sanctuary to learn, experiment, and elevate your skills.</p>
+
+              <p>As you navigate through the features, remember that every challenge you face is an opportunity to learn. Celebrate your victories, embrace the learning curve, and let this dashboard be the launchpad for your next web programming adventure.</p>
+
+              <p>So, buckle up, fellow coder! Your journey begins here, and the possibilities are as limitless as your imagination.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
 
 <?php
 include('dashboardIncludes/footer.html');
