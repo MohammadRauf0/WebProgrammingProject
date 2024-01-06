@@ -19,7 +19,7 @@ if (isset($_SESSION['log']) && $_SESSION['log'] != '1') {
 
 
 include('dashboardIncludes/header.html');
-require 'db-connection.php';
+require 'config.php';
 ?>
 
 <div class="navbar bg-white shadow">
@@ -36,7 +36,19 @@ require 'db-connection.php';
       </i>
     </div>
 
-    <div>
+    <div class="dropdown">
+      <a href="#" class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle p-3" data-bs-toggle="dropdown" aria-expanded="false" id="userDropdown">
+        <img src="https://cdn-icons-png.flaticon.com/512/3177/3177440.png" alt="profile image" width="32" height="32" class="rounded-circle me-3" />
+        <div class=""><?= $_SESSION['user']; ?></div>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-light text-small shadow" aria-labelledby="userDropdown">
+        <li>
+          <a class="dropdown-item" href="#">Profile</a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="./auth/logOut.php">Sign out</a>
+        </li>
+      </ul>
     </div>
   </div>
 </div>
@@ -78,39 +90,65 @@ require 'db-connection.php';
     <h5>Entries:</h5>
 
     <!-- ----------------start of the looping part-------------- -->
+
+
+    <!-- ----------(START) This part contains the code that gets the id from username------- -->
+
+    <?php
+    $user_name = $_SESSION['user']; //get the user name from session
+    $query = "SELECT id FROM user WHERE user_name = '$user_name'";
+    $result = mysqli_query($con, $query);
+
+    if ($result) {
+      // Check if any rows are returned
+      if (mysqli_num_rows($result) > 0) {
+        // Fetch the result (assuming only one row is expected)
+        $row = mysqli_fetch_assoc($result);
+        $_SESSION['userId'] = $row['id'];
+      } else {
+        echo "No matching records found.";
+      }
+    } else {
+      echo "Query failed: " . mysqli_error($con);
+    }
+
+    ?>
+
+    <!-- ----------(END) This part contains the code that gets the id from username------- -->
+
+
     <?php
     $query = "SELECT * FROM notes";
     $query_run = mysqli_query($con, $query);
 
     if (mysqli_num_rows($query_run) > 0) {
       foreach ($query_run as $note) {
+        if ($note['user_id'] == $_SESSION['userId']) {
     ?>
-
-        <div class="container mt-2" style="max-width: 280px;">
-          <div class="row rounded-3 bg-dark" style="height: 55px; color: #ffffff; overflow: hidden;">
-            <div class="col-9 d-flex align-items-center" style="overflow: hidden;">
-              <a class="text-decoration-none text-white" href="note-view.php?id=<?= $note['id']; ?>">
-                <?= $note['id'] . ". " . $note['title']; ?>
-              </a>
-            </div>
-            <div class="col-1 d-flex align-items-center">
-              <a href="note-edit.php?id=<?= $note['id']; ?>">
-                <i class="fa-solid fa-pen" style="color: #ffffff;"></i>
-              </a>
-            </div>
-            <div class="col-1 d-flex align-items-center">
-              <form action="delete-note.php" method="POST" class="d-inline">
-                <input type="hidden" name="note_id" value="<?= $note['id']; ?>">
-                <button type="submit" name="delete_note" class="btn btn-danger btn-sm">
-                  <i class="fa-regular fa-trash-can" style="color: #ffffff;"></i>
-                </button>
-              </form>
+          <div class="container mt-2" style="max-width: 280px;">
+            <div class="row rounded-3 bg-dark" style="height: 55px; color: #ffffff; overflow: hidden;">
+              <div class="col-9 d-flex align-items-center" style="overflow: hidden;">
+                <a class="text-decoration-none text-white" href="note-view.php?id=<?= $note['id']; ?>">
+                  <?= $note['title']; ?>
+                </a>
+              </div>
+              <div class="col-1 d-flex align-items-center">
+                <a href="note-edit.php?id=<?= $note['id']; ?>">
+                  <i class="fa-solid fa-pen" style="color: #ffffff;"></i>
+                </a>
+              </div>
+              <div class="col-1 d-flex align-items-center">
+                <form action="delete-note.php" method="POST" class="d-inline">
+                  <input type="hidden" name="note_id" value="<?= $note['id']; ?>">
+                  <button type="submit" name="delete_note" class="btn btn-danger btn-sm">
+                    <i class="fa-regular fa-trash-can" style="color: #ffffff;"></i>
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
-        </div>
-
-
     <?php
+        }
       }
     } else {
       echo "<h5>No Records Found</h5>";
@@ -121,21 +159,14 @@ require 'db-connection.php';
 
     <!---------------end body of the off canvas  ------------------->
   </div>
+
+
   <!-- ------------------Start of the footer-------------------- -->
 
-  <div class="dropdown shadow w-100 bg-dark text-white" style="position: absolute; bottom: 5px;">
-    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle p-3" data-bs-toggle="dropdown" aria-expanded="false" id="userDropdown">
-      <img src="https://cdn-icons-png.flaticon.com/512/3177/3177440.png" alt="" width="32" height="32" class="rounded-circle me-3" />
-      <div class="text-white">some name</div>
-    </a>
-    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="userDropdown">
-      <li><a class="dropdown-item" href="#">Profile</a></li>
-      <li>
-        <a class="dropdown-item" href="./auth/logOut.php">Sign out</a>
-      </li>
-    </ul>
-  </div>
-  <!-- ------------------Start of the footer-------------------- -->
+  <a href="./auth/logOut.php" class="btn btn-outline-danger btn-lg m-3">Log Out</a>
+  <!-- ------------------end of the footer-------------------- -->
+
+
 </div>
 <!---------------end of the side bar/nav cancas------------------->
 <div class="container mt-5">
@@ -152,7 +183,7 @@ require 'db-connection.php';
       <div class="card-header text-center">
 
         <h1>
-          Welcome back <?= $_SESSION['user']; ?>
+          Welcome back <?= $_SESSION['first-name']; ?>
         </h1>
       </div>
 

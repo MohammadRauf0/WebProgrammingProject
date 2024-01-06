@@ -1,12 +1,11 @@
 <?php
 include('./dashboardIncludes/crudHeader.html');
-require 'db-connection.php';
+require 'config.php';
 session_start();
 ?>
 
 <div class="container mt-5">
   <div class="row">
-    <div class="col-3"></div>
     <div class="col">
       <div class="card">
 
@@ -38,7 +37,7 @@ session_start();
                 </div>
                 <div class="mb-3">
                   <label>Content:</label>
-                  <textarea class="form-control"  name="content" rows="10"><?= $note['content']; ?></textarea>
+                  <textarea class="form-control" name="content" rows="20"><?= $note['content']; ?></textarea>
                 </div>
 
                 <div class="mb-3">
@@ -53,7 +52,6 @@ session_start();
 
       </div>
     </div>
-    <div class="col-3"></div>
   </div>
 </div>
 

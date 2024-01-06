@@ -3,6 +3,8 @@ session_start();
 unset($_SESSION['user']);
 unset($_SESSION['password']);
 unset($_SESSION['log']);
+unset($_SESSION['userId']);
+unset($_SESSION['first-name']);
 session_destroy();
 
 echo '

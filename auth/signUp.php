@@ -60,6 +60,7 @@ if (isset($_POST['button1'])) {
       $stmt->bind_param("ssssss", $post1, $post2, $post3, $post4, $hashedPassword, $post6);
       if ($stmt->execute()) {
         // Create session
+        $_SESSION['first-name'] = $post2;
         $_SESSION['user'] = $post1;
         $_SESSION['password'] = $hashedPassword;
         $_SESSION['log'] = "1";

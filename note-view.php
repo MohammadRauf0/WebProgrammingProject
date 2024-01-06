@@ -1,12 +1,11 @@
 <?php
 include('./dashboardIncludes/crudHeader.html');
-require 'db-connection.php';
+require 'config.php';
 session_start();
 ?>
 
 <div class="container mt-5">
   <div class="row">
-    <div class="col-3"></div>
     <div class="col">
       <div class="card">
 
@@ -28,18 +27,18 @@ session_start();
             if (mysqli_num_rows($query_run)) {
               $note = mysqli_fetch_array($query_run);
           ?>
-                <div class="mb-3">
-                  <label>Title:</label>
-                  <p class="form-control">
-                    <?= $note['title']; ?>
-                  </p>
-                </div>
-                <div class="mb-3">
-                  <label>Content:</label>
-                  <p class="form-control" style="max-height: 500px; overflow:scroll">
-                    <?= $note['content']; ?>
-                  </p>
-                </div>
+              <div class="mb-3">
+                <label>Title:</label>
+                <p class="form-control">
+                  <?= $note['title']; ?>
+                </p>
+              </div>
+              <div class="mb-3">
+                <label>Content:</label>
+                <p class="form-control" style="max-height: 500px; overflow:scroll">
+                  <?= $note['content']; ?>
+                </p>
+              </div>
           <?php
             }
           }
@@ -48,7 +47,6 @@ session_start();
 
       </div>
     </div>
-    <div class="col-3"></div>
   </div>
 </div>
 

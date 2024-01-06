@@ -5,7 +5,6 @@ session_start();
 
 <div class="container mt-5">
   <div class="row">
-    <div class="col-3"></div>
     <div class="col">
       <div class="card">
 
@@ -21,11 +20,11 @@ session_start();
 
             <div class="mb-3">
               <label>Title:</label>
-              <input type="text" name="title" class="form-control">
+              <input type="text" name="title" class="form-control" required>
             </div>
             <div class="mb-3">
               <label>Content:</label>
-              <textarea class="form-control" name="content" rows="10"></textarea>
+              <textarea class="form-control" name="content" rows="20"></textarea>
             </div>
 
             <div class="mb-3">
@@ -39,7 +38,6 @@ session_start();
       include('message.php');
       ?>
     </div>
-    <div class="col-3"></div>
   </div>
 </div>
 

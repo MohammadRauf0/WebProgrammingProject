@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'db-connection.php';
+require 'config.php';
 
 
 if (isset($_POST['delete_note'])) {

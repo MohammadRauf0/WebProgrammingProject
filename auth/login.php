@@ -48,6 +48,8 @@ if (isset($_POST['button2'])) {
       $Rowsql = $result->fetch_assoc();
       $username = $Rowsql['user_name'];
       $hashedPassword = $Rowsql['user_pass'];
+      $firstName = $Rowsql['first_name'];
+      $_SESSION['first-name'] = $firstName;
 
       // Use password_verify to check hashed password
       if (password_verify($post5, $hashedPassword)) {

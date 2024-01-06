@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'db-connection.php';
+require 'config.php';
 
 if (isset($_POST['update_note'])) {
   $note_id = mysqli_real_escape_string($con, $_POST['note_id']);
