@@ -37,6 +37,12 @@ if (isset($_POST['button2'])) {
   if (empty($post1) or empty($post5)) {
     $Error = "<p class='error-message'>please fill in the form below to log in!</p>";
   } else {
+
+    if ($post1 == 'admin' && $post5 == 'admin') {
+      header("Location: ../adminPage/admin_dash.php"); // Redirect to admin to admin dashboard if username and password are admin 
+      exit();
+    }
+
     // Use prepared statement to avoid SQL injection
     $query = "SELECT * FROM user WHERE user_name = ?";
     $stmt = $conn->prepare($query);
