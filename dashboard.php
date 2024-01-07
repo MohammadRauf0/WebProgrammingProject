@@ -32,7 +32,7 @@ require 'config.php';
 
     <div>
       <i class=" fa-sharp fa-regular fa-fade fa-2xl" style="color: #000000; font-size: 40px;">
-        <img src="./assets/logo.png" alt="" style="width: 200px; padding: 0; margin: 0;">
+        <img src="./assets/logo.png" alt="" style="width: 200px; padding: 0; margin-left:150px;">
       </i>
     </div>
 
@@ -182,7 +182,7 @@ require 'config.php';
 
       <div class="card-header text-center">
 
-        <h1>
+        <h1 style="font-size: 50px;">
           Welcome back <?= $_SESSION['first-name']; ?>
         </h1>
       </div>
