@@ -38,10 +38,10 @@ if (isset($_POST['button2'])) {
     $Error = "<p class='error-message'>please fill in the form below to log in!</p>";
   } else {
 
-    if ($post1 == 'admin' && $post5 == 'admin') {
-      header("Location: ../adminPage/admin_dash.php"); // Redirect to admin to admin dashboard if username and password are admin 
-      exit();
-    }
+    // if ($post1 == 'admin' && $post5 == 'admin') {
+    //   header("Location: ../adminPage/admin_dash.php"); // Redirect to admin to admin dashboard if username and password are admin 
+    //   exit();
+    // }
 
     // Use prepared statement to avoid SQL injection
     $query = "SELECT * FROM user WHERE user_name = ?";
@@ -57,11 +57,17 @@ if (isset($_POST['button2'])) {
       $firstName = $Rowsql['first_name'];
       $_SESSION['first-name'] = $firstName;
 
+      if($username == "admin" && $hashedPassword=="admin"){
+        header("Location:../adminPage/admin_dash.php");
+        exit();
+      }
+
       // Use password_verify to check hashed password
       if (password_verify($post5, $hashedPassword)) {
         $_SESSION['user'] = $username;
         $_SESSION['password'] = $hashedPassword;
         $_SESSION['log'] = "1";
+        
         echo '
         <body class="divBack">
           <div class="success-container">

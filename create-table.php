@@ -64,3 +64,12 @@ if (mysqli_query($con, $alterTableQuery)) {
 } else {
   die("Failed adding foreign key relationship: " . mysqli_error($con));
 }
+
+//REMOVE THIS IF PUBLISHING, ADMIN PAGE CONTAINS ALL USERS AND ENTRIES.
+$query = "INSERT INTO user (user_name, first_name, last_name, user_email, user_pass, conform_userP) VALUES ('admin', 'admin', 'admin', 'admin', 'admin', 'admin')";
+$query_run = mysqli_query($con, $query);
+if (!$query_run) {
+  die('Error in query');
+} else {
+  echo "admin inserted successfully";
+}
