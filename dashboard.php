@@ -43,10 +43,7 @@ require 'config.php';
       </a>
       <ul class="dropdown-menu dropdown-menu-light text-small shadow" aria-labelledby="userDropdown">
         <li>
-          <a href="./dashboard.php" class="dropdown-item">example</a>
-        </li>
-        <li>
-          <a class="dropdown-item" href="./profile.php  ">Profile</a>
+          <a class="dropdown-item" href="./profile.php">Profile</a>
         </li>
         <li>
           <a class="dropdown-item" href="./auth/logOut.php">Sign out</a>
