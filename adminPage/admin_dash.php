@@ -41,8 +41,7 @@ session_start();
                     echo "<tr>";
                     echo "<td>" . $content['id'] . "</td>";
                     echo "<td>" . $content['user_name'] . "</td>";
-                    echo "<td>" . $content['first_name'] . " " . $content['last_name'];
-                    "</td>";
+                    echo "<td>" . $content['first_name'] . " " . $content['last_name'] . "</td>"; // Close the td tag
                     echo "<td>" . $content['user_email'] . "</td>";
                     echo "<td>" . $content['conform_userP'] . "</td>";
                   ?>
@@ -50,7 +49,7 @@ session_start();
                       <a href="./userOperations/update.php" class="btn btn-success btn-sm">Edit</a>
 
                       <form action="./userOperations/delete.php" method="POST" class="d-inline">
-                        <input type="hidden" name="user_id" value="">
+                        <input type="hidden" name="user_id" value="<?php echo $content['id']; ?>"> <!-- Set the value attribute -->
                         <button type="submit" name="delete_student" class="btn btn-danger btn-sm">Delete</button>
                       </form>
                     </td>
