@@ -3,37 +3,27 @@ include("../adminAssets/operationHeader.html");
 session_start();
 require '../config.php';
 
-if (!isset($_GET['id'])) {
-  // Redirect back to previous page or show an error
-  header('Location: ../admin_dash.php');
-  exit;
-}
-
 $user_id = $_GET['id'];
-$select = "SELECT id, user_name, first_name, last_name, user_email FROM user WHERE id = ?";
-$stmt = mysqli_prepare($con, $select);
-mysqli_stmt_bind_param($stmt, 'i', $user_id);
-mysqli_stmt_execute($stmt);
-$resultUsers = mysqli_stmt_get_result($stmt);
-
-if (!$resultUsers) {
-  die('Error in SQL query: ' . mysqli_error($con));
-}
-
-$rowselect = mysqli_fetch_array($resultUsers);
-// Update the user profile
 
 if (isset($_POST['update_user'])) {
-  $username = $_POST['user_name'];
-  $firstname = $_POST['first_name'];
-  $lastname = $_POST['last_name'];
-  $email = $_POST['user_email'];
-  $newPassword = $_POST['new_pass'];
 
-  // Hash the new password
-  $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+  $id = mysqli_real_escape_string($con, $_GET['id']);
+  $username = mysqli_real_escape_string($con, $_POST['user_name']);
+  $firstName = mysqli_real_escape_string($con, $_POST['first_name']);
+  $lastName = mysqli_real_escape_string($con, $_POST['last_name']);
+  $email = mysqli_real_escape_string($con, $_POST['user_email']);
+  $password = mysqli_real_escape_string($con, $_POST['password']);
+  $repeatPassword = mysqli_real_escape_string($con, $_POST['confirm_password']);
 
-  $updateQuery = "UPDATE user SET 
+
+  if ($password != $repeatPassword) {
+    $_SESSION['update'] = "<p class='error-message'>Password and confirm password do not match!</p>";
+  } else {
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    $confirmHashPassword = password_hash($repeatPassword, PASSWORD_DEFAULT);
+
+
+    $sql = "UPDATE user SET 
             user_name = ?,
             first_name = ?,
             last_name = ?,
@@ -41,21 +31,18 @@ if (isset($_POST['update_user'])) {
             user_pass = ?,
             conform_userP = ?
             WHERE id = ? 
-        ";
+            ";
+    $stmt = $con->prepare($sql);
+    $stmt->bind_param('ssssssi', $username, $firstName, $lastName, $email, $hashedPassword, $confirmHashPassword, $id);
+    $stmt->execute();
 
-  $stmtUpdate = mysqli_prepare($con, $updateQuery);
-  mysqli_stmt_bind_param($stmtUpdate, 'ssssssi', $username, $firstname, $lastname, $email, $hashedPassword, $hashedPassword, $user_id);
-  $resultUpdate = mysqli_stmt_execute($stmtUpdate);
-
-  if ($resultUpdate) {
-    $_SESSION['message'] = "Profile has been updated successfully!";
-    header('Location: ../admin_dash.php');
-    exit();
-  } else {
-    die('Error in SQL update query: ' . mysqli_error($con));
+    if ($stmt->affected_rows > 0) {
+      $_SESSION['update'] = "<p> updated successfully</p>";
+    } else {  
+      $_SESSION['update'] = "<p>failed to update</p>";
+    }
   }
 }
-
 ?>
 
 <div class="container mt-5">
@@ -72,6 +59,23 @@ if (isset($_POST['update_user'])) {
         </div>
 
         <div class="card-body">
+
+          <?php
+
+          if (isset($_GET['id'])) {
+            $userId = mysqli_real_escape_string($con, $_GET['id']);
+            $sql = "SELECT id, user_name, first_name, last_name, user_email, conform_userP FROM user WHERE id = ?";
+            $stmt = $con->prepare($sql);
+            $stmt->bind_param("i", $userId);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            // Fetch the user row
+            $userRow = $result->fetch_assoc();
+          }
+
+          ?>
+
           <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'] . '?id=' . $_GET['id']); ?>" method="POST">
 
             <div class="input-group mb-4">
@@ -85,7 +89,7 @@ if (isset($_POST['update_user'])) {
             <div class="input-group mb-4">
               <span class="input-group-text"><i class="fa-solid fa-user" style="font-size: 20px;"></i></span>
               <div class="form-floating">
-                <input type="text" class="form-control" name="user_name" id="floatingInputGroup1" placeholder="Username" value="<?= $rowselect['user_name']; ?>" style="font-size: 20px" required>
+                <input type="text" class="form-control" name="user_name" id="floatingInputGroup1" placeholder="Username" value="<?= $userRow['user_name']; ?>" style="font-size: 20px" required>
                 <label for="floatingInputGroup1">Username</label>
               </div>
             </div>
@@ -93,14 +97,14 @@ if (isset($_POST['update_user'])) {
             <div class="row">
               <div class="col input-group mb-4">
                 <div class="form-floating">
-                  <input type="text" class="form-control" name="first_name" id="floatingInputGroup1" placeholder="First name" value="<?= $rowselect['first_name']; ?>" style="font-size: 20px" required>
+                  <input type="text" class="form-control" name="first_name" id="floatingInputGroup1" placeholder="First name" value="<?= $userRow['first_name']; ?>" style="font-size: 20px" required>
                   <label for="floatingInputGroup1">First name</label>
                 </div>
               </div>
 
               <div class="col input-group mb-4">
                 <div class="form-floating">
-                  <input type="text" class="form-control" name="last_name" id="floatingInputGroup1" placeholder="Last name" value="<?= $rowselect['last_name']; ?>" style="font-size: 20px" required>
+                  <input type="text" class="form-control" name="last_name" id="floatingInputGroup1" placeholder="Last name" value="<?= $userRow['last_name']; ?>" style="font-size: 20px" required>
                   <label for="floatingInputGroup1">Last name</label>
                 </div>
               </div>
@@ -109,7 +113,7 @@ if (isset($_POST['update_user'])) {
             <div class="input-group mb-4">
               <span class="input-group-text"><i class="fa-solid fa-envelope" style="font-size: 25px;"></i></span>
               <div class="form-floating">
-                <input type="text" class="form-control" name="user_email" id="floatingInputGroup1" placeholder="Email" value="<?= $rowselect['user_email']; ?>" style="font-size: 20px" required>
+                <input type="text" class="form-control" name="user_email" id="floatingInputGroup1" placeholder="Email" value="<?= $userRow['user_email']; ?>" style="font-size: 20px" required>
                 <label for="floatingInputGroup1">Email</label>
               </div>
             </div>
@@ -117,7 +121,7 @@ if (isset($_POST['update_user'])) {
             <div class="input-group mb-4">
               <span class="input-group-text"><i class="fa-solid fa-key" style="font-size: 25px;"></i></span>
               <div class="form-floating">
-                <input type="text" class="form-control" name="new_pass" id="floatingInputGroup1" placeholder="Password" style="font-size: 20px" required>
+                <input type="text" class="form-control" name="password" id="floatingInputGroup1" placeholder="Password" value="<?= $userRow['conform_userP']; ?>" style="font-size: 20px" required>
                 <label for="floatingInputGroup1">Password</label>
               </div>
             </div>
@@ -125,7 +129,7 @@ if (isset($_POST['update_user'])) {
             <div class="input-group mb-4">
               <span class="input-group-text"><i class="fa-solid fa-lock" style="font-size: 25px;"></i></span>
               <div class="form-floating">
-                <input type="text" class="form-control" name="repeat_password" id="floatingInputGroup1" placeholder="Confirm Password" style="font-size: 20px" required>
+                <input type="text" class="form-control" name="confirm_password" id="floatingInputGroup1" placeholder="Confirm Password" value="<?= $userRow['conform_userP']; ?>" style="font-size: 20px" required>
                 <label for="floatingInputGroup1">Confirm Password</label>
               </div>
             </div>
