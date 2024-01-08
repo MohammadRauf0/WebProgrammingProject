@@ -54,6 +54,9 @@ if (isset($_POST['edit'])) {
   } else {
     die('Error in SQL update query: ' . mysqli_error($con));
   }
+
+  header("Location: ./dashboard.php");
+  exit(0);
 }
 ?>
 
