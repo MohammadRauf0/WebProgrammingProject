@@ -33,7 +33,6 @@ session_start();
                     <th>user_name</th>
                     <th>name</th>
                     <th>user_email</th>
-                    <th>Password</th>
                     <th>ACTION</th>
                   </tr>
                   <?php
@@ -43,14 +42,13 @@ session_start();
                     echo "<td>" . $content['user_name'] . "</td>";
                     echo "<td>" . $content['first_name'] . " " . $content['last_name'] . "</td>"; // Close the td tag
                     echo "<td>" . $content['user_email'] . "</td>";
-                    echo "<td>" . $content['conform_userP'] . "</td>";
                     if($content['id'] != 1){
                   ?>
                     <td>
                       <a href="./userOperations/update.php?id=<?= $content['id']; ?>" class="btn btn-success btn-sm">Edit</a>
                       <form action="./userOperations/delete.php" method="POST" class="d-inline">
                         <input type="hidden" name="user_id" value="<?php echo $content['id']; ?>"> <!-- Set the value attribute -->
-                        <button type="submit" name="delete_student" class="btn btn-danger btn-sm">Delete</button>
+                        <button type="submit" name="delete_user" class="btn btn-danger btn-sm">Delete</button>
                       </form>
                     </td>
               <?php
@@ -106,12 +104,12 @@ session_start();
                     echo "<td>" . $content['title'] . "</td>";
                   ?>
                     <td>
-                      <a href="" class="btn btn-info btn-sm">View</a>
-                      <a href="" class="btn btn-success btn-sm">Edit</a>
+                      <a href="./noteOperations/read.php?id=<?=$content['id']; ?>" class="btn btn-info btn-sm">View</a>
+                      <a href="./noteOperations/update.php?id=<?=$content['id']; ?>" class="btn btn-success btn-sm">Edit</a>
 
-                      <form action="" method="" class="d-inline">
-                        <input type="hidden" name="user_id" value="">
-                        <button type="submit" name="delete_student" class="btn btn-danger btn-sm">Delete</button>
+                      <form action="./noteOperations/delete.php" method="POST" class="d-inline">
+                        <input type="hidden" name="note_id" value="<?=$content['id']; ?>">
+                        <button type="submit" name="delete_note" class="btn btn-danger btn-sm">Delete</button>
                       </form>
                     </td>
               <?php

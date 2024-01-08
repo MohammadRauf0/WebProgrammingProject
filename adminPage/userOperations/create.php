@@ -28,10 +28,12 @@ if (isset($_POST['save_user'])) {
     $error = "<p class='error-message'>Password and confirm password do not match!</p>";
   } else {
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    $confirmHashPassword = password_hash($repeatPassword, PASSWORD_DEFAULT);
+
 
     $sql = "INSERT INTO user (user_name, first_name, last_name, user_email, user_pass, conform_userP) VALUES (?, ?, ?, ?, ?, ?)";
     $stmt = $con->prepare($sql);
-    $stmt->bind_param('ssssss', $username, $firstName, $lastName, $email, $hashedPassword, $repeatPassword);
+    $stmt->bind_param('ssssss', $username, $firstName, $lastName, $email, $hashedPassword, $confirmHashPassword);
     $stmt->execute();
     $result = $stmt->get_result();
 
