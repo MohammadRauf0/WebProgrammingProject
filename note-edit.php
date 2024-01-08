@@ -2,6 +2,12 @@
 include('./dashboardIncludes/crudHeader.html');
 require 'config.php';
 session_start();
+
+$location = "./dashboard.php";
+
+if($_SESSION['search']){
+  $location = "./search?query=" . $_SESSION['query'];
+}
 ?>
 
 <div class="container mt-5">
@@ -12,7 +18,7 @@ session_start();
         <div class="card-header">
           <h3>
             Update note
-            <a href="dashboard.php" class="btn btn-danger float-end">Back</a>
+            <a href="<?=$location; ?>" class="btn btn-danger float-end">Back</a>
           </h3>
         </div>
 

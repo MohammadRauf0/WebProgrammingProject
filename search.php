@@ -5,12 +5,12 @@ require 'config.php';
 include 'dashboardIncludes/header.html';
 include 'dashboardIncludes/crudHeader.html';
 
-
-
 $query = $_GET['query'];
+$_SESSION['query'] = $query;
 $user_id = $_SESSION['userId'];
 $sql = "SELECT * FROM notes WHERE user_id = $user_id AND (title LIKE '%$query%' OR content LIKE '%$query%')";
 $result = mysqli_query($con, $sql);
+$_SESSION['search'] = true;
 ?>
 
 <div class="container mt-5">

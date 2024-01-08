@@ -20,6 +20,8 @@ if (isset($_SESSION['log']) && $_SESSION['log'] != '1') {
 
 include('dashboardIncludes/header.html');
 require 'config.php';
+
+$_SESSION['search'] = false;
 ?>
 
 <div class="navbar bg-white shadow">
