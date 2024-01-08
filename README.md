@@ -60,9 +60,9 @@ Edit the `config.php` file in the root directory to set up the database connecti
 
 ## Authors
 
-- **Tariq Ahmad** - *Initial work* - [Tariq](https://github.com/godofcode007)
+- **Tariq Ahmad** - *Development* - [Tariq](https://github.com/godofcode007)
 - **Mohammad Rauf** - *Development* - [Rauf](https://github.com/mohammadrauf0)
-- **Dania Ayad** - *Design* - [Dania](https://github.com/Cactuskiller)
+- **Dania Ayad** - *Development* - [Dania](https://github.com/Cactuskiller)
 
 
 ## Acknowledgments
