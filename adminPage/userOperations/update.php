@@ -3,6 +3,12 @@ include("../adminAssets/operationHeader.html");
 session_start();
 require '../config.php';
 
+if (!isset($_GET['id'])) {
+  // Redirect back to previous page or show an error
+  header('Location: ../admin_dash.php');
+  exit;
+}
+
 $user_id = $_GET['id'];
 $select = "SELECT id, user_name, first_name, last_name, user_email FROM user WHERE id = ?";
 $stmt = mysqli_prepare($con, $select);
@@ -15,9 +21,6 @@ if (!$resultUsers) {
 }
 
 $rowselect = mysqli_fetch_array($resultUsers);
-
-
-
 // Update the user profile
 
 if (isset($_POST['update_user'])) {
@@ -26,7 +29,6 @@ if (isset($_POST['update_user'])) {
   $lastname = $_POST['last_name'];
   $email = $_POST['user_email'];
   $newPassword = $_POST['new_pass'];
-  
 
   // Hash the new password
   $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
@@ -47,6 +49,8 @@ if (isset($_POST['update_user'])) {
 
   if ($resultUpdate) {
     $_SESSION['message'] = "Profile has been updated successfully!";
+    header('Location: ../admin_dash.php');
+    exit();
   } else {
     die('Error in SQL update query: ' . mysqli_error($con));
   }
@@ -68,7 +72,7 @@ if (isset($_POST['update_user'])) {
         </div>
 
         <div class="card-body">
-          <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
+          <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'] . '?id=' . $_GET['id']); ?>" method="POST">
 
             <div class="input-group mb-4">
               <span class="input-group-text">@</span>
