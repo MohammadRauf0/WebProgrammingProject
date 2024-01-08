@@ -7,7 +7,7 @@ if (isset($_SESSION['log']) && $_SESSION['log'] == '1') {
         <link rel="stylesheet" href="style.css" />
         <img src="../Assets/error3.png" alt="Success Image"width=200>
         <p class="e-message">You already logged in</p>
-        <meta http-equiv="refresh" content="3, url=../dashboard.php">
+        <meta http-equiv="refresh" content="2, url=../dashboard.php">
       </div>
      
     <body/>

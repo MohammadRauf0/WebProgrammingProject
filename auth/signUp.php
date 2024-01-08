@@ -7,7 +7,7 @@ if (isset($_SESSION['log']) && $_SESSION['log'] == '1') {
         <link rel="stylesheet" href="style.css" />
         <img src="../Assets/error3.png" alt="Success Image"width=200>
         <p class="e-message">You have already signed in</p>
-        <meta http-equiv="refresh" content="3, url=../dashboard.php">
+        <meta http-equiv="refresh" content="2, url=../dashboard.php">
       </div>
      
     <body/>
@@ -54,10 +54,12 @@ if (isset($_POST['button1'])) {
     } else {
       // Use password_hash for the password
       $hashedPassword = password_hash($post5, PASSWORD_DEFAULT);
+      $hashedPasswordCon = password_hash($post6, PASSWORD_DEFAULT);
+
 
       $insert = "INSERT INTO user (user_name, first_name, last_name, user_email, user_pass, conform_userP) VALUES (?, ?, ?, ?, ?, ?)";
       $stmt = $conn->prepare($insert);
-      $stmt->bind_param("ssssss", $post1, $post2, $post3, $post4, $hashedPassword, $post6);
+      $stmt->bind_param("ssssss", $post1, $post2, $post3, $post4, $hashedPassword, $hashedPasswordCon);
       if ($stmt->execute()) {
         // Create session
         $_SESSION['first-name'] = $post2;
@@ -70,7 +72,7 @@ if (isset($_POST['button1'])) {
             <link rel="stylesheet" href="style.css" />
             <img src="../Assets/tick4.webp" alt="Success Image"width=250>
             <p class="success-message">You have successfully logged in!,you can view your dashbored</p>
-            <meta http-equiv="refresh" content="3, url=../dashboard.php">
+            <meta http-equiv="refresh" content="2, url=../dashboard.php">
           </div>
          
         <body/>
@@ -214,7 +216,7 @@ if (isset($_POST['button1'])) {
               </div>
 
               <div class="row">
-                <small>Already have an account?<a href="Login1.php">Login</a></small>
+                <small>Already have an account?<a href="login.php">Login</a></small>
               </div>
             </form>
           </div>
