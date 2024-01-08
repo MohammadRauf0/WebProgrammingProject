@@ -108,7 +108,7 @@ if (isset($_POST['edit'])) {
               <span class="input-group-text">
                 <i class="fa-solid fa-key"></i>
               </span>
-              <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="New Password" name="new_pass" required />
+              <input type="password" class="form-control form-control-lg bg-light fs-6" placeholder="New Password" name="new_pass" required />
             </div>
             <!-- end of the input felids -->
 

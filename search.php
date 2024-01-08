@@ -2,7 +2,6 @@
 session_start();
 require 'config.php';
 
-
 include 'dashboardIncludes/header.html';
 include 'dashboardIncludes/crudHeader.html';
 

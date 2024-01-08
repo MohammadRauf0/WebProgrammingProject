@@ -101,7 +101,7 @@ if (isset($_POST['save_user'])) {
             <div class="input-group mb-4">
               <span class="input-group-text"><i class="fa-solid fa-key" style="font-size: 25px;"></i></span>
               <div class="form-floating">
-                <input type="text" class="form-control" name="password" id="floatingInputGroup1" placeholder="Password" style="font-size: 20px" required>
+                <input type="password" class="form-control" name="password" id="floatingInputGroup1" placeholder="Password" style="font-size: 20px" required>
                 <label for="floatingInputGroup1">Password</label>
               </div>
             </div>
@@ -109,13 +109,13 @@ if (isset($_POST['save_user'])) {
             <div class="input-group mb-4">
               <span class="input-group-text"><i class="fa-solid fa-lock" style="font-size: 25px;"></i></span>
               <div class="form-floating">
-                <input type="text" class="form-control" name="confirm_password" id="floatingInputGroup1" placeholder="Confirm Password" style="font-size: 20px" required>
+                <input type="password" class="form-control" name="confirm_password" id="floatingInputGroup1" placeholder="Confirm Password" style="font-size: 20px" required>
                 <label for="floatingInputGroup1">Confirm Password</label>
               </div>
             </div>
 
             <div class="mb-3">
-              <button class="btn btn-outline-success btn-lg float-end" type="submit" name="save_user">Save Note</button>
+              <button class="btn btn-outline-success btn-lg float-end" type="submit" name="save_user">Save User</button>
             </div>
           </form>
         </div>
