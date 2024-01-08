@@ -55,6 +55,9 @@ if (isset($_POST['edit'])) {
     die('Error in SQL update query: ' . mysqli_error($con));
   }
 
+  $_SESSION['user'] = $username;
+  $_SESSION['first-name'] = $firstname;
+
   header("Location: ./dashboard.php");
   exit(0);
 }
