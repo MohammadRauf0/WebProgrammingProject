@@ -118,12 +118,12 @@ require 'config.php';
 
 
     <?php
-    $query = "SELECT * FROM notes";
+    $uid = $_SESSION['userId'];
+    $query = "SELECT * FROM notes WHERE user_id = '$uid'";
     $query_run = mysqli_query($con, $query);
 
     if (mysqli_num_rows($query_run) > 0) {
       foreach ($query_run as $note) {
-        if ($note['user_id'] == $_SESSION['userId']) {
     ?>
           <div class="container mt-2" style="max-width: 300px;">
             <div class="row rounded-3 bg-dark" style="height: 55px; color: #ffffff; overflow: hidden; width:300px">
@@ -148,7 +148,6 @@ require 'config.php';
             </div>
           </div>
     <?php
-        }
       }
     } else {
       echo "<h5>No Records Found</h5>";
