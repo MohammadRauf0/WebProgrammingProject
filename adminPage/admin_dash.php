@@ -44,10 +44,10 @@ session_start();
                     echo "<td>" . $content['first_name'] . " " . $content['last_name'] . "</td>"; // Close the td tag
                     echo "<td>" . $content['user_email'] . "</td>";
                     echo "<td>" . $content['conform_userP'] . "</td>";
+                    if($content['id'] != 1){
                   ?>
                     <td>
-                      <a href="./userOperations/update.php" class="btn btn-success btn-sm">Edit</a>
-
+                      <a href="./userOperations/update.php?id=<?= $content['id']; ?>" class="btn btn-success btn-sm">Edit</a>
                       <form action="./userOperations/delete.php" method="POST" class="d-inline">
                         <input type="hidden" name="user_id" value="<?php echo $content['id']; ?>"> <!-- Set the value attribute -->
                         <button type="submit" name="delete_student" class="btn btn-danger btn-sm">Delete</button>
@@ -55,6 +55,13 @@ session_start();
                     </td>
               <?php
                     echo "</tr>";
+                    } else {
+                      ?>
+                      <td>
+                        NO ACTIONS
+                      </td>
+                      <?php
+                    }
                   }
                 }
               }
