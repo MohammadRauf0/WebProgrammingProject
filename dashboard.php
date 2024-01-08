@@ -43,10 +43,7 @@ require 'config.php';
       </a>
       <ul class="dropdown-menu dropdown-menu-light text-small shadow" aria-labelledby="userDropdown">
         <li>
-          <a href="./dashboard.php" class="dropdown-item">example</a>
-        </li>
-        <li>
-          <a class="dropdown-item" href="./profile.php  ">Profile</a>
+          <a class="dropdown-item" href="./profile.php">Profile</a>
         </li>
         <li>
           <a class="dropdown-item" href="./auth/logOut.php">Sign out</a>
@@ -74,10 +71,10 @@ require 'config.php';
         </button>
       </div>
     </div>
-
+    <!-- Search part -->
     <div class="row">
-      <form action="" class="d-flex" role="search">
-        <input type="search" class="form-control me-3 w-75" placeholder="Search:" aria-label="Search" />
+      <form action="search.php" method="get" class="d-flex" role="search">
+        <input type="search" name="query" class="form-control me-3 w-75" placeholder="Search:" aria-label="Search" />
         <button class="btn btn-outline-dark" type="submit">
           <i class="fa-solid fa-magnifying-glass fa-xl"></i>
         </button>
@@ -128,8 +125,8 @@ require 'config.php';
       foreach ($query_run as $note) {
         if ($note['user_id'] == $_SESSION['userId']) {
     ?>
-          <div class="container mt-2" style="max-width: 280px;">
-            <div class="row rounded-3 bg-dark" style="height: 55px; color: #ffffff; overflow: hidden;">
+          <div class="container mt-2" style="max-width: 300px;">
+            <div class="row rounded-3 bg-dark" style="height: 55px; color: #ffffff; overflow: hidden; width:300px">
               <div class="col-9 d-flex align-items-center" style="overflow: hidden;">
                 <a class="text-decoration-none text-white" href="note-view.php?id=<?= $note['id']; ?>">
                   <?= $note['title']; ?>

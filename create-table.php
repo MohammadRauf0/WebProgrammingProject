@@ -1,29 +1,4 @@
 <?php
-$tableNameNotes = "notes";
-// Checks if a table by the name $tableNameNotes exists
-$tableExistsQueryNotes = "SHOW TABLES LIKE '$tableNameNotes' ";
-$resultNotes = mysqli_query($con, $tableExistsQueryNotes);
-
-if ($resultNotes && mysqli_num_rows($resultNotes) > 0) {
-  // echo "Table $tableNameNotes exists. <br>";
-} else {
-  $createTableQueryNotes = "
-    CREATE TABLE $tableNameNotes (
-      id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-      user_id INT(6) UNSIGNED,
-      title VARCHAR(255) NOT NULL,
-      content TEXT,
-      FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE CASCADE
-    )
-  ";
-
-  if (mysqli_query($con, $createTableQueryNotes)) {
-    // echo "Table $tableNameNotes created successfully." . "<br>";
-  } else {
-    die("Failed creating table: " . mysqli_error($con));
-  }
-}
-
 $tableNameUsers = "User";
 // Checks if a table by the name $tableNameUsers exists
 $tableExistsQueryUsers = "SHOW TABLES LIKE '$tableNameUsers' ";
@@ -49,17 +24,42 @@ if ($resultUsers && mysqli_num_rows($resultUsers) > 0) {
   } else {
     die("Failed creating table: " . mysqli_error($con));
   }
+}
 
-  //REMOVE THIS IF PUBLISHING, ADMIN PAGE CONTAINS ALL USERS AND ENTRIES.
-  $query = "INSERT INTO user (user_name, first_name, last_name, user_email, user_pass, conform_userP) VALUES ('admin', 'admin', 'admin', 'admin', 'admin', 'admin')";
-  $query_run = mysqli_query($con, $query);
-  if (!$query_run) {
-    die('Error in query');
+$tableNameNotes = "notes";
+// Checks if a table by the name $tableNameNotes exists
+$tableExistsQueryNotes = "SHOW TABLES LIKE '$tableNameNotes' ";
+$resultNotes = mysqli_query($con, $tableExistsQueryNotes);
+
+if ($resultNotes && mysqli_num_rows($resultNotes) > 0) {
+  // echo "Table $tableNameNotes exists. <br>";
+} else {
+  $createTableQueryNotes = "
+    CREATE TABLE $tableNameNotes (
+      id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+      user_id INT(6) UNSIGNED,
+      title VARCHAR(255) NOT NULL,
+      content TEXT,
+      FOREIGN KEY (user_id) REFERENCES $tableNameUsers(id) ON DELETE CASCADE
+    )
+";
+
+  if (mysqli_query($con, $createTableQueryNotes)) {
+    // echo "Table $tableNameNotes created successfully." . "<br>";
   } else {
-    echo "admin inserted successfully";
-    //REMOVE TILL HERE
+    die("Failed creating table: " . mysqli_error($con));
   }
 }
+
+//REMOVE THIS IF PUBLISHING, ADMIN PAGE CONTAINS ALL USERS AND ENTRIES.
+$query = "INSERT INTO user (user_name, first_name, last_name, user_email, user_pass, conform_userP) VALUES ('admin', 'admin', 'admin', 'admin', 'admin', 'admin')";
+$query_run = mysqli_query($con, $query);
+if (!$query_run) {
+  die('Error in query');
+} else {
+  echo "admin inserted successfully";
+}
+
 
 // Add foreign key relationship between user and notes tables
 $alterTableQuery = "
