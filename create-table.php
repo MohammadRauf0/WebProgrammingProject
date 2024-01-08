@@ -24,6 +24,14 @@ if ($resultUsers && mysqli_num_rows($resultUsers) > 0) {
   } else {
     die("Failed creating table: " . mysqli_error($con));
   }
+  //REMOVE THIS IF PUBLISHING, ADMIN PAGE CONTAINS ALL USERS AND ENTRIES.
+  $query = "INSERT INTO user (user_name, first_name, last_name, user_email, user_pass, conform_userP) VALUES ('admin', 'admin', 'admin', 'admin', 'admin', 'admin')";
+  $query_run = mysqli_query($con, $query);
+  if (!$query_run) {
+    die('Error in query');
+  } else {
+    echo "admin inserted successfully";
+  }
 }
 
 $tableNameNotes = "notes";
@@ -51,14 +59,7 @@ if ($resultNotes && mysqli_num_rows($resultNotes) > 0) {
   }
 }
 
-//REMOVE THIS IF PUBLISHING, ADMIN PAGE CONTAINS ALL USERS AND ENTRIES.
-$query = "INSERT INTO user (user_name, first_name, last_name, user_email, user_pass, conform_userP) VALUES ('admin', 'admin', 'admin', 'admin', 'admin', 'admin')";
-$query_run = mysqli_query($con, $query);
-if (!$query_run) {
-  die('Error in query');
-} else {
-  echo "admin inserted successfully";
-}
+
 
 
 // Add foreign key relationship between user and notes tables

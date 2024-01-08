@@ -58,6 +58,7 @@ if (isset($_POST['button2'])) {
       $_SESSION['first-name'] = $firstName;
 
       if($username == "admin" && $hashedPassword=="admin"){
+        $_SESSION['message'] = "WELCOME TO YOUR ADMIN PAGE";
         header("Location:../adminPage/admin_dash.php");
         exit();
       }

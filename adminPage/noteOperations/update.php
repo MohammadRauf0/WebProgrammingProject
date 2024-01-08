@@ -22,10 +22,13 @@ if (isset($_POST['update_note'])) { // Change 'update_user' to 'update_note'
   $stmt->execute();
 
   if ($stmt->affected_rows > 0) {
-    $_SESSION['update'] = "<p> updated successfully</p>";
+    $_SESSION['message'] = "Note has been successfully updated";
   } else {
-    $_SESSION['update'] = "<p>failed to update</p>";
+    $_SESSION['message'] = "Updating the note did not work out";
   }
+
+  header("Location: ../admin_dash.php");
+  exit(0);
 }
 ?>
 

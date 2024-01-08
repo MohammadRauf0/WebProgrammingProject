@@ -7,7 +7,7 @@ $error = "";
 $message = "";
 
 if (isset($_POST['save_user'])) {
-  
+
   $username = mysqli_real_escape_string($con, $_POST['user_name']);
   $firstName = mysqli_real_escape_string($con, $_POST['first_name']);
   $lastName = mysqli_real_escape_string($con, $_POST['last_name']);
@@ -23,9 +23,9 @@ if (isset($_POST['save_user'])) {
   $result = $stmt->get_result();
 
   if ($result->num_rows > 0) {
-    $error = "<p class='error-message'>Please fill in the form below to create an account!</p>";
+    $_SESSION['message'] = "Please fill in the form below to create an account!";
   } elseif ($password != $repeatPassword) {
-    $error = "<p class='error-message'>Password and confirm password do not match!</p>";
+    $_SESSION['message'] = "Password and confirm password do not match!";
   } else {
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
     $confirmHashPassword = password_hash($repeatPassword, PASSWORD_DEFAULT);
@@ -38,9 +38,9 @@ if (isset($_POST['save_user'])) {
     $result = $stmt->get_result();
 
     if ($result) {
-      $error = "<p not success!</p>";
+      $_SESSION['message'] = "not success!";
     } else {
-      $error = "<p>added successfully</p>";
+      $_SESSION['message'] = "added successfully";
     }
   }
 }
@@ -63,7 +63,9 @@ if (isset($_POST['save_user'])) {
         </div>
 
         <div class="card-body">
-          <?=$error; ?>
+          <?php
+          include('../adminAssets/message.php');
+          ?>
           <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
 
             <div class="input-group mb-4">

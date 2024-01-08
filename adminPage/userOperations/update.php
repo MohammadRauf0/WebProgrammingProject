@@ -17,7 +17,7 @@ if (isset($_POST['update_user'])) {
 
 
   if ($password != $repeatPassword) {
-    $_SESSION['update'] = "<p class='error-message'>Password and confirm password do not match!</p>";
+    $_SESSION['message'] = "Password and confirm password do not match!";
   } else {
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
     $confirmHashPassword = password_hash($repeatPassword, PASSWORD_DEFAULT);
@@ -37,9 +37,11 @@ if (isset($_POST['update_user'])) {
     $stmt->execute();
 
     if ($stmt->affected_rows > 0) {
-      $_SESSION['update'] = "<p> updated successfully</p>";
-    } else {  
-      $_SESSION['update'] = "<p>failed to update</p>";
+      $_SESSION['message'] = "User information has been updated successfully, yay!";
+      header("Location: ../admin_dash.php");
+      exit(0);
+    } else {
+      $_SESSION['message'] = "User information has regretiblly failed miserably, this probably also means that the program isnt working as its supposed to, sorry...";
     }
   }
 }
@@ -51,6 +53,9 @@ if (isset($_POST['update_user'])) {
     <div class="col-3"></div>
 
     <div class="col">
+      <?php
+      include('../adminAssets/message.php');
+      ?>
       <div class="card">
         <div class="card-header">
           <h2 class="m-2">Update a User

@@ -1,4 +1,21 @@
 <?php
+
+if (isset($_SESSION['log']) && $_SESSION['log'] != '1') {
+  echo '
+    <body class="divBack">
+      <div class="success-container">
+        <link rel="stylesheet" href="style.css" />
+        <img src="../Assets/error3.png" alt="Success Image"width=200>
+        <p class="e-message">You already logged in</p>
+        <meta http-equiv="refresh" content="3, url=./auth/login.php">
+      </div>
+     
+    <body/>
+    ';
+
+  exit();
+}
+
 include('adminAssets/header.html');
 require '../config.php';
 session_start();
@@ -7,6 +24,11 @@ session_start();
 <div class="m-5">
   <div class="row">
     <!-- START users table -->
+    <div class="container">
+    <?php
+    include("./adminAssets/message.php");
+    ?>
+    </div>
     <div class="col-7">
       <div class="card rounded-3 " style="min-height: 500px;">
 

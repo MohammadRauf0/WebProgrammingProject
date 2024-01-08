@@ -22,14 +22,17 @@ if (isset($_POST['delete_note'])) {
     mysqli_stmt_execute($delete_stmt);
 
     if ($delete_stmt) {
+      $_SESSION['message'] = "DELETING note was successfull, the user will no longer be able to see it.";
       header("Location: ../admin_dash.php");
       exit(0);
     } else {
+      $_SESSION['message'] = "FAILED";
       header("Location: ../admin_dash.php");
       exit(0);
     }
   } else {
     // The note does not exist
+    $_SESSION['message'] = "THERE WAS NO SUCH NOTE!";
     header("Location: ../admin_dash.php");
     exit(0);
   }
